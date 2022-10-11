@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container-sm">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="input-text" class="form-label">Tutaj wklej tekst</label>
+                        <input type="text" id="input-text" class="form-control" placeholder="">
+                    </div>
+                    <div><button class="btn btn-primary" id="btn-convert">Konwertuj</button></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="output-text" class="form-label">Rezultat</label>
+                        <input type="text" id="output-text" class="form-control" placeholder="Tutaj pojawi się wynik">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        (function($) {
+            function clearText(text) {
+                return text.replaceAll(/([^a-zA-Z0-9]+)/gm, ' ');
+            }
+
+            function convert() {
+                $("#output-text").val(clearText($("#input-text").val()));
+            }
+
+            $(function() {
+                var $input = $("#input-text");
+                var $output = $("#output-text");
+                var $btn = $("#btn-convert");
+
+                $input.on('keyup', convert);
+                $btn.click(convert);
+            });
+        })(window.jQuery);
+        </script>
+    </body>
+</html>
